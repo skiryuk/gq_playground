@@ -14,7 +14,7 @@ class ContractsListPageQuery implements IContractsListPageQuery {
   @override
   Future<ContractPage?> call(NoParams params) {
     return _contractsDataSource
-        .getContractsList(ContractsListQuery())
+        .getContractsList()
         .then((ContractsList$Query? model) => model?.toAppModel());
   }
 }

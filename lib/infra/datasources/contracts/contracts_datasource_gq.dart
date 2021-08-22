@@ -3,7 +3,6 @@ import 'package:gq_playground/infra/datasources/contracts/contracts_datasource.d
 import 'package:gq_playground/infra/exceptions/graphql_exception.dart';
 import 'package:gq_playground/infra/gq_models/gq_models.dart';
 import 'package:gq_playground/infra/http/graphql_client.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 class ContractsDataSourceGq implements IContractsDataSource {
   final IGqClient _client;
@@ -11,10 +10,9 @@ class ContractsDataSourceGq implements IContractsDataSource {
   ContractsDataSourceGq(client) : _client = client;
 
   @override
-  Future<ContractsList$Query?> getContractsList(
-      GraphQLQuery<ContractsList$Query, JsonSerializable> query) async {
+  Future<ContractsList$Query?> getContractsList() async {
     return _client
-        .execute(query)
+        .execute(ContractsListQuery())
         .then((GraphQLResponse<ContractsList$Query> res) => res.data)
         .catchError((e) => throw GqException('Ошибка'));
   }
