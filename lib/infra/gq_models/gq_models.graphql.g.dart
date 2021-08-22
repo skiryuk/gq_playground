@@ -7,39 +7,34 @@ part of 'gq_models.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Model
-    _$Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2ModelFromJson(
-        Map<String, dynamic> json) {
-  return Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Model()
+SalesPointHistoryItemV2Model _$SalesPointHistoryItemV2ModelFromJson(
+    Map<String, dynamic> json) {
+  return SalesPointHistoryItemV2Model()
     ..id = json['id'] as int
     ..name = json['name'] as String
     ..code = json['code'] as String;
 }
 
-Map<String, dynamic>
-    _$Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2ModelToJson(
-            Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Model
-                instance) =>
-        <String, dynamic>{
-          'id': instance.id,
-          'name': instance.name,
-          'code': instance.code,
-        };
+Map<String, dynamic> _$SalesPointHistoryItemV2ModelToJson(
+        SalesPointHistoryItemV2Model instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'code': instance.code,
+    };
 
-Salepoints$Query$SalePointsHistoryResponseModel
-    _$Salepoints$Query$SalePointsHistoryResponseModelFromJson(
-        Map<String, dynamic> json) {
-  return Salepoints$Query$SalePointsHistoryResponseModel()
+SalePointsHistoryResponseModel _$SalePointsHistoryResponseModelFromJson(
+    Map<String, dynamic> json) {
+  return SalePointsHistoryResponseModel()
     ..items = (json['items'] as List<dynamic>)
         .map((e) =>
-            Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Model
-                .fromJson(e as Map<String, dynamic>))
+            SalesPointHistoryItemV2Model.fromJson(e as Map<String, dynamic>))
         .toList()
     ..totalCount = json['totalCount'] as int;
 }
 
-Map<String, dynamic> _$Salepoints$Query$SalePointsHistoryResponseModelToJson(
-        Salepoints$Query$SalePointsHistoryResponseModel instance) =>
+Map<String, dynamic> _$SalePointsHistoryResponseModelToJson(
+        SalePointsHistoryResponseModel instance) =>
     <String, dynamic>{
       'items': instance.items.map((e) => e.toJson()).toList(),
       'totalCount': instance.totalCount,
@@ -47,9 +42,8 @@ Map<String, dynamic> _$Salepoints$Query$SalePointsHistoryResponseModelToJson(
 
 Salepoints$Query _$Salepoints$QueryFromJson(Map<String, dynamic> json) {
   return Salepoints$Query()
-    ..salePointHistory =
-        Salepoints$Query$SalePointsHistoryResponseModel.fromJson(
-            json['salePointHistory'] as Map<String, dynamic>);
+    ..salePointHistory = SalePointsHistoryResponseModel.fromJson(
+        json['salePointHistory'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$Salepoints$QueryToJson(Salepoints$Query instance) =>
@@ -57,42 +51,34 @@ Map<String, dynamic> _$Salepoints$QueryToJson(Salepoints$Query instance) =>
       'salePointHistory': instance.salePointHistory.toJson(),
     };
 
-ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel
-    _$ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModelFromJson(
-        Map<String, dynamic> json) {
-  return ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel()
+ContractItemModel _$ContractItemModelFromJson(Map<String, dynamic> json) {
+  return ContractItemModel()
     ..ctn = json['ctn'] as String?
     ..contractId = json['contractId'] as int
     ..barcode = json['barcode'] as String?
     ..iccid = json['iccid'] as String?;
 }
 
-Map<String, dynamic>
-    _$ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModelToJson(
-            ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel
-                instance) =>
-        <String, dynamic>{
-          'ctn': instance.ctn,
-          'contractId': instance.contractId,
-          'barcode': instance.barcode,
-          'iccid': instance.iccid,
-        };
+Map<String, dynamic> _$ContractItemModelToJson(ContractItemModel instance) =>
+    <String, dynamic>{
+      'ctn': instance.ctn,
+      'contractId': instance.contractId,
+      'barcode': instance.barcode,
+      'iccid': instance.iccid,
+    };
 
-ContractsList$Query$PagingResponseModelOfContractItemModel
-    _$ContractsList$Query$PagingResponseModelOfContractItemModelFromJson(
+PagingResponseModelOfContractItemModel
+    _$PagingResponseModelOfContractItemModelFromJson(
         Map<String, dynamic> json) {
-  return ContractsList$Query$PagingResponseModelOfContractItemModel()
+  return PagingResponseModelOfContractItemModel()
     ..items = (json['items'] as List<dynamic>)
-        .map((e) =>
-            ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel
-                .fromJson(e as Map<String, dynamic>))
+        .map((e) => ContractItemModel.fromJson(e as Map<String, dynamic>))
         .toList()
     ..totalCount = json['totalCount'] as int;
 }
 
-Map<String,
-    dynamic> _$ContractsList$Query$PagingResponseModelOfContractItemModelToJson(
-        ContractsList$Query$PagingResponseModelOfContractItemModel instance) =>
+Map<String, dynamic> _$PagingResponseModelOfContractItemModelToJson(
+        PagingResponseModelOfContractItemModel instance) =>
     <String, dynamic>{
       'items': instance.items.map((e) => e.toJson()).toList(),
       'totalCount': instance.totalCount,
@@ -100,9 +86,8 @@ Map<String,
 
 ContractsList$Query _$ContractsList$QueryFromJson(Map<String, dynamic> json) {
   return ContractsList$Query()
-    ..contractList =
-        ContractsList$Query$PagingResponseModelOfContractItemModel.fromJson(
-            json['contractList'] as Map<String, dynamic>);
+    ..contractList = PagingResponseModelOfContractItemModel.fromJson(
+        json['contractList'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$ContractsList$QueryToJson(

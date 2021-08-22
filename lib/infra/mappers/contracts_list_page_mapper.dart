@@ -8,8 +8,7 @@ extension ContractsList$QueryX on ContractsList$Query {
       items: contractList.items.map((i) => i.toAppModel()).toList());
 }
 
-extension ContractsListItemX
-    on ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel {
+extension ContractItemModelX on ContractItemModel {
   ContractPageItem toAppModel() => ContractPageItem(
       contractId: contractId, iccid: iccid, ctn: ctn, barcode: barcode);
 }

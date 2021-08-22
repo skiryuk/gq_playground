@@ -8,14 +8,12 @@ import 'package:gql/ast.dart';
 part 'gq_models.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Model
-    extends JsonSerializable with EquatableMixin {
-  Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Model();
+class SalesPointHistoryItemV2Model extends JsonSerializable
+    with EquatableMixin {
+  SalesPointHistoryItemV2Model();
 
-  factory Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Model.fromJson(
-          Map<String, dynamic> json) =>
-      _$Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2ModelFromJson(
-          json);
+  factory SalesPointHistoryItemV2Model.fromJson(Map<String, dynamic> json) =>
+      _$SalesPointHistoryItemV2ModelFromJson(json);
 
   late int id;
 
@@ -26,31 +24,25 @@ class Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Mod
   @override
   List<Object?> get props => [id, name, code];
   @override
-  Map<String, dynamic> toJson() =>
-      _$Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2ModelToJson(
-          this);
+  Map<String, dynamic> toJson() => _$SalesPointHistoryItemV2ModelToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Salepoints$Query$SalePointsHistoryResponseModel extends JsonSerializable
+class SalePointsHistoryResponseModel extends JsonSerializable
     with EquatableMixin {
-  Salepoints$Query$SalePointsHistoryResponseModel();
+  SalePointsHistoryResponseModel();
 
-  factory Salepoints$Query$SalePointsHistoryResponseModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$Salepoints$Query$SalePointsHistoryResponseModelFromJson(json);
+  factory SalePointsHistoryResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$SalePointsHistoryResponseModelFromJson(json);
 
-  late List<
-          Salepoints$Query$SalePointsHistoryResponseModel$SalesPointHistoryItemV2Model>
-      items;
+  late List<SalesPointHistoryItemV2Model> items;
 
   late int totalCount;
 
   @override
   List<Object?> get props => [items, totalCount];
   @override
-  Map<String, dynamic> toJson() =>
-      _$Salepoints$Query$SalePointsHistoryResponseModelToJson(this);
+  Map<String, dynamic> toJson() => _$SalePointsHistoryResponseModelToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -60,7 +52,7 @@ class Salepoints$Query extends JsonSerializable with EquatableMixin {
   factory Salepoints$Query.fromJson(Map<String, dynamic> json) =>
       _$Salepoints$QueryFromJson(json);
 
-  late Salepoints$Query$SalePointsHistoryResponseModel salePointHistory;
+  late SalePointsHistoryResponseModel salePointHistory;
 
   @override
   List<Object?> get props => [salePointHistory];
@@ -69,14 +61,11 @@ class Salepoints$Query extends JsonSerializable with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel
-    extends JsonSerializable with EquatableMixin {
-  ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel();
+class ContractItemModel extends JsonSerializable with EquatableMixin {
+  ContractItemModel();
 
-  factory ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModelFromJson(
-          json);
+  factory ContractItemModel.fromJson(Map<String, dynamic> json) =>
+      _$ContractItemModelFromJson(json);
 
   String? ctn;
 
@@ -89,24 +78,19 @@ class ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemMod
   @override
   List<Object?> get props => [ctn, contractId, barcode, iccid];
   @override
-  Map<String, dynamic> toJson() =>
-      _$ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModelToJson(
-          this);
+  Map<String, dynamic> toJson() => _$ContractItemModelToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class ContractsList$Query$PagingResponseModelOfContractItemModel
-    extends JsonSerializable with EquatableMixin {
-  ContractsList$Query$PagingResponseModelOfContractItemModel();
+class PagingResponseModelOfContractItemModel extends JsonSerializable
+    with EquatableMixin {
+  PagingResponseModelOfContractItemModel();
 
-  factory ContractsList$Query$PagingResponseModelOfContractItemModel.fromJson(
+  factory PagingResponseModelOfContractItemModel.fromJson(
           Map<String, dynamic> json) =>
-      _$ContractsList$Query$PagingResponseModelOfContractItemModelFromJson(
-          json);
+      _$PagingResponseModelOfContractItemModelFromJson(json);
 
-  late List<
-          ContractsList$Query$PagingResponseModelOfContractItemModel$ContractItemModel>
-      items;
+  late List<ContractItemModel> items;
 
   late int totalCount;
 
@@ -114,7 +98,7 @@ class ContractsList$Query$PagingResponseModelOfContractItemModel
   List<Object?> get props => [items, totalCount];
   @override
   Map<String, dynamic> toJson() =>
-      _$ContractsList$Query$PagingResponseModelOfContractItemModelToJson(this);
+      _$PagingResponseModelOfContractItemModelToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -124,7 +108,7 @@ class ContractsList$Query extends JsonSerializable with EquatableMixin {
   factory ContractsList$Query.fromJson(Map<String, dynamic> json) =>
       _$ContractsList$QueryFromJson(json);
 
-  late ContractsList$Query$PagingResponseModelOfContractItemModel contractList;
+  late PagingResponseModelOfContractItemModel contractList;
 
   @override
   List<Object?> get props => [contractList];

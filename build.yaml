@@ -12,6 +12,7 @@ targets:
             - schema: gq_scheme.graphql
               queries_glob: lib/infra/gq_queries/*.graphql
               output: lib/infra/gq_models/gq_models.dart
+              naming_scheme: simple
           scalar_mapping:
             - graphql_type: Long
               dart_type: int
