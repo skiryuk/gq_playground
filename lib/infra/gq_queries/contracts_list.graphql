@@ -1,0 +1,11 @@
+query ContractsList {
+    contractList(model: {limit: 10, offset: 0}) {
+        items {
+            ctn,
+            contractId,
+            barcode,
+            iccid
+        },
+        totalCount
+    }
+}

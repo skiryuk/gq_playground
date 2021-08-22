@@ -1,0 +1,13 @@
+query Salepoints {
+    salePointHistory(model: {
+        offset: 0,
+        limit: 10
+    }) {
+        items {
+            id,
+            name,
+            code
+        },
+        totalCount
+    }
+}

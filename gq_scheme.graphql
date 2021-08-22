@@ -1,0 +1,391 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+"Информация о тарифном плане для отображения в списке договоров."
+type ContractItemBillPlanModel {
+    "Наименование тарифного плана"
+    name: String!
+    "SOC тарифного плана."
+    soc: String!
+}
+
+"Информация о подключении для отображения в списке договоров."
+type ContractItemConnectionModel {
+    "Тарифный план."
+    billPlan: ContractItemBillPlanModel
+    "Можно ли менять тарифный план"
+    canChangeBillPlan: Boolean!
+    "Идентификатор подключения договора."
+    connectionId: Int!
+    "Номер телефона."
+    ctn: String
+    "Переносимый номер телефона."
+    ctnPortation: String
+    "Дата и время первого использования SIM-карты абонентом (дата и время активации стартового баланса)."
+    firstUseDate: DateTime
+    "Серийный номер SIM-карты."
+    iccid: String!
+    "Было ли активировано подключение"
+    isActivated: Boolean!
+    "Данные по скорингу."
+    scoringInfo: ContractItemScoringInfoModel
+}
+
+"Данные договора для вывода в списке."
+type ContractItemModel {
+    "Дата и время создания договора."
+    addDate: DateTime!
+    "Штрих-код."
+    barcode: String
+    "Подключения."
+    connections: [ContractItemConnectionModel!]!
+    "Код (номер) договора"
+    contractCode: String!
+    "Дата заключения договора (в формате \"yyyy-MM-dd\")."
+    contractDate: String!
+    "Идентификатор договора"
+    contractId: Int!
+    "Номер телефона из первого подключения."
+    ctn: String
+    "Код дилера."
+    dealerCode: String!
+    "Код точки регистрации."
+    dealerPointCode: String!
+    "Дата и время последнего изменения договора."
+    editDate: DateTime
+    "Есть ли хотя бы один прикрепленный скан договора."
+    hasScans: Boolean!
+    "Серийный номер сим-карты из первого подключения."
+    iccid: String
+    "Признак того, что договор заключён в электронном виде."
+    isElectronic: Boolean!
+    """
+
+    Признак договора само-регистрации, зарегистрированного в новом мобильном приложении
+    и импортированного из UAPI.
+    """
+    isImportedFromUAPI: Boolean!
+    "Заблокирован ли кем-либо договор."
+    isLocked: Boolean!
+    "Признак само-регистрации."
+    isSelfRegistration: Boolean!
+    "Признак само-регистрации через DOL."
+    isSelfRegistrationDOL: Boolean!
+    "Логин продавца, который внёс последние изменения."
+    login: String
+    "Дата и время регистрации договора."
+    registrationDate: DateTime
+    "Код точки продаж."
+    skadPointCode: String
+    skadPointName: String
+    "Статус договора."
+    status: Int!
+    "Статус договора в aCRM."
+    statusAcrm: StatusAcrmEnum!
+    "Дата и время последнего изменения статуса."
+    statusDate: DateTime!
+    "Наименование статуса договора"
+    statusName: String!
+    "Статус договора. Может содержать EcmError или другую информацию."
+    statusReason: String
+}
+
+"Данные по скорингу"
+type ContractItemScoringInfoModel {
+    "Описание группы скоринга."
+    description: String!
+    "Идентификатор группы скоринга (поле id из справочника GET /handbook/scoring)."
+    interval: Int!
+}
+
+"Список дилеров"
+type DealerInfoResponseV2Model {
+    "Разрешена регистрация контракта субдилерами"
+    canHaveSubDealers: Boolean!
+    "Идентификатор канала продаж (справочник /handbook/dealerchannel)"
+    channel: Int
+    "Код дилера"
+    dealerCode: String
+    "Наименование филиала"
+    filialName: String!
+    "Идентификатор дилера"
+    id: Long!
+    "Признак активности дилера"
+    isActive: Boolean!
+    "Признак разрешения работы дилеру с продажей кодов антивирусов"
+    isAntivirus: Boolean!
+    "Признак разрешения работы дилеру с заявками на ШПД"
+    isBroadband: Boolean!
+    "Признак разрешения работы дилера с договорами конвергенции"
+    isConvergence: Boolean!
+    "Признак разрешения работы дилеру с интернет-магазином"
+    isInternetShop: Boolean!
+    "Текущий продавец связан с дилером"
+    isSellerLinked: Boolean!
+    "Признак разрешения работы дилера с целевыми предложениями"
+    isTargetOffer: Boolean!
+    "Маркет-код филиала"
+    marketCode: String!
+    "Наименование дилера"
+    name: String!
+    "Дата и время редактирования объекта(в формате ISO 8601)"
+    updateDate: DateTime
+}
+
+type LocationModel {
+    id: Long!
+    name: String!
+    parentId: Long
+    parentName: String
+    typeId: Long!
+    typeName: String!
+    weight: Int!
+}
+
+type PagingResponseModelOfContractItemModel {
+    items: [ContractItemModel!]!
+    totalCount: Int!
+}
+
+"Корневой запрос к данным приложения."
+type Query {
+    "Получить список договоров с фильтрацией, сортировкой и постраничным выводом."
+    contractList(
+        "Параметры запроса."
+        model: ContractListRequestModelInput!
+    ): PagingResponseModelOfContractItemModel!
+    "Получение истории авторизации торговых точек с пейджингом."
+    salePointHistory(model: FilterRequestModelInput!): SalePointsHistoryResponseModel!
+    "Получение списка торговых точек с пейджингом."
+    salePoints(
+        "Параметры запроса."
+        model: FilterRequestModelInput!
+    ): SalesPointListResponseModel!
+}
+
+"История авторизации торговых точек с пейджингом."
+type SalePointsHistoryResponseModel {
+    items: [SalesPointHistoryItemV2Model!]!
+    totalCount: Int!
+}
+
+"Описание объекта истории авторизации торговых точек"
+type SalesPointHistoryItemV2Model {
+    "Комментарий к местоположению"
+    addressNotes: String
+    "Идентификатор формата брендирования"
+    brandingType: Long
+    "Тип ТТ"
+    channel: Long!
+    "Идентификатор кластера ТТ"
+    cluster: Long
+    "Код ТТ в СКАД"
+    code: String!
+    "Код ТТ в Ensemble"
+    codeAmdocs: String
+    "Дилер ТТ"
+    dealer: DealerInfoResponseV2Model
+    "Идентификатор дилера"
+    dealerId: Long
+    "Номер дома"
+    house: String!
+    "Идентификатор ТТ"
+    id: Long!
+    "Признак активности ТТ в филиале"
+    isActive: Boolean!
+    "Поле для фильтрации и отображения точек продаж, которые скрыты пользователем"
+    isHidden: Boolean!
+    "Дата и время последней авторизации продавца в ТТ (в формате ISO 8601)"
+    lastAuthDate: DateTime!
+    "Координата местоположения(широта)"
+    lat: Float
+    "Координата местоположения(долгота)"
+    lng: Float
+    "Наименование ТТ"
+    name: String!
+    "Владелец ТТ"
+    owner: String
+    "Контактные телефоны"
+    phones: String
+    "Роль"
+    role: Long!
+    "Улица"
+    street: StreetModel!
+    "Идентификатор улицы"
+    streetId: Long!
+    "Дата и время редактирования объекта(в формате ISO 8601)"
+    updateDate: DateTime
+}
+
+"Описание объекта торговой точки"
+type SalesPointListItemResponseModel {
+    "Комментарий к местоположению"
+    addressNotes: String
+    "Идентификатор формата брендирования"
+    brandingType: Long
+    "Тип ТТ"
+    channel: Long!
+    "Идентификатор кластера ТТ"
+    cluster: Long
+    "Код ТТ в СКАД"
+    code: String!
+    "Код ТТ в Ensemble"
+    codeAmdocs: String
+    "Дилер ТТ"
+    dealer: DealerInfoResponseV2Model
+    "Идентификатор дилера"
+    dealerId: Long
+    "Номер дома"
+    house: String!
+    "Идентификатор ТТ"
+    id: Long!
+    "Признак активности ТТ в филиале"
+    isActive: Boolean!
+    "Значение из dealer.isSellerLinked – точка доступа продавцу, так как продавец связан с дилером"
+    isSellerLinked: Boolean!
+    "Координата местоположения(широта)"
+    lat: Float
+    "Координата местоположения(долгота)"
+    lng: Float
+    "Наименование ТТ"
+    name: String!
+    "Владелец ТТ"
+    owner: String
+    "Контактные телефоны"
+    phones: String
+    "Улица"
+    street: StreetModel!
+    "Идентификатор улицы"
+    streetId: Long!
+    "Дата и время редактирования объекта(в формате ISO 8601)"
+    updateDate: DateTime
+}
+
+"Список торговых точек с пейджингом"
+type SalesPointListResponseModel {
+    items: [SalesPointListItemResponseModel!]!
+    totalCount: Int!
+}
+
+type StreetModel {
+    id: Long!
+    location: LocationModel!
+    locationId: Long!
+    name: String!
+    typeId: Long!
+    typeName: String!
+}
+
+"Логика объединения фильтров."
+enum FilterByLogic {
+    "И — все фильтры должны быть применены в группе."
+    AND
+    "ИЛИ — любой из фильтров должен быть применён в группе."
+    OR
+}
+
+"Оператор условия фильтрации."
+enum FilterByOperator {
+    "Содержит значение (коллекции)."
+    ANY
+    "Включает в себя (строки)."
+    CONTAINS
+    "Заканчивается на (строки)."
+    ENDS_WITH
+    "Равно (числа, строки, дата/время, null)."
+    EQ
+    "Больше (числа, дата/время)."
+    GT
+    "Больше или равно (числа, дата/время)."
+    GTE
+    "Меньше (числа, дата/время)."
+    LT
+    "Меньше или равно (числа, дата/время)."
+    LTE
+    "Равно (числа, строки, дата/время, null)."
+    NEQ
+    "НЕ содержит значение (коллекции)."
+    NOT_ANY
+    "НЕ включает в себя (строки)."
+    NOT_CONTAINS
+    "НЕ заканчивается на (строки)."
+    NOT_ENDS_WITH
+    "НЕ начинается на (строки)."
+    NOT_STARTS_WITH
+    "Начинается на (строки)."
+    STARTS_WITH
+}
+
+"Статус договора в ACRM"
+enum StatusAcrmEnum {
+    "Получен положительный ответ от aCRM (регистрация разрешена)"
+    ALLOWED
+    "Нет ограничений"
+    DEFAULT
+    "Получен отрицательный ответ от aCRM (регистрация запрещена, требуется смена персональных данных)"
+    FORBIDDEN
+    "Регистрация временно запрещена, создан кейс в aCRM"
+    TEMPORARILY_FORBIDDEN
+}
+
+"Запрос списка договоров."
+input ContractListRequestModelInput {
+    "Параметры фильтрации."
+    filterBy: FilterByGroupModelInput
+    "Выбрать указанное количество элементов в результатах запроса."
+    limit: Int!
+    "Пропустить указанное количество элементов в результатах запроса."
+    offset: Int!
+    "Список параметров сортировки полей."
+    orderBy: [OrderByModelInput!]
+}
+
+"Группа условий для фильтрации данных."
+input FilterByGroupModelInput {
+    "Вложенные группы условий фильтрации."
+    groups: [FilterByGroupModelInput!]!
+    "Условия фильтрации."
+    items: [FilterByModelInput!]!
+    "Логика объединения фильтров в группе. Применяется для условий и вложенных групп."
+    logic: FilterByLogic!
+}
+
+"Условие фильтрации."
+input FilterByModelInput {
+    "Наименование поля для фильтрации."
+    field: String!
+    "Оператор фильтра."
+    op: FilterByOperator!
+    "Значение фильтра."
+    value: String
+}
+
+"Запрос отсортированного и отфильтрованного списка данных с постраничным выводом."
+input FilterRequestModelInput {
+    "Параметры фильтрации."
+    filterBy: FilterByGroupModelInput
+    "Выбрать указанное количество элементов в результатах запроса."
+    limit: Int!
+    "Пропустить указанное количество элементов в результатах запроса."
+    offset: Int!
+    "Список параметров сортировки полей."
+    orderBy: [OrderByModelInput!]
+}
+
+"Параметры сортировки для поля."
+input OrderByModelInput {
+    "Флаг, задающий обратное направление сортировки. True — по убыванию, False — по возрастанию."
+    desc: Boolean!
+    "Имя поля для сортировки."
+    field: String!
+}
+
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long

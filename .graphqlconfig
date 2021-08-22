@@ -1,0 +1,12 @@
+{
+ "name": "DOL GQ Scheme",
+ "schemaPath": "gq_scheme.graphql",
+ "extensions": {
+   "endpoints": {
+     "Default": {
+       "url": "http://dolfront.beelinedev.ru/graphql",
+       "introspect": true
+     }
+   }
+ }
+}
