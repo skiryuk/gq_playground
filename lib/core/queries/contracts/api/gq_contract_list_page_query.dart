@@ -4,16 +4,12 @@ import 'package:gq_playground/core/gq_models/gq_models.graphql.dart';
 import 'package:gq_playground/core/http/graphql_client.dart';
 import 'package:gq_playground/core/queries/query.dart';
 
-abstract class IContractsListPageQuery
-    implements IQuery<NoParams, ContractsList$Query?> {
-  @override
-  Future<ContractsList$Query?> call(NoParams params);
-}
+import '../contract_list_page_query.dart';
 
-class ContractsListPageQuery implements IContractsListPageQuery {
+class GqContractsListPageQuery implements IContractsListPageQuery {
   final IGqClient _client;
 
-  ContractsListPageQuery(client) : _client = client;
+  GqContractsListPageQuery(client) : _client = client;
 
   @override
   Future<ContractsList$Query?> call(NoParams params) {

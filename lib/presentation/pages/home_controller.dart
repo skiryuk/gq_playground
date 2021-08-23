@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:gq_playground/core/gq_models/gq_models.dart';
-import 'package:gq_playground/core/queries/api/contracts/contract_list_page_query.dart';
+import 'package:gq_playground/core/queries/contracts/contract_list_page_query.dart';
 import 'package:gq_playground/core/queries/query.dart';
 
 import 'home_state.dart';
