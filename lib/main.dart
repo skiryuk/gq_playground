@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +9,10 @@ import 'presentation/core/bindings/initial_binding.dart';
 import 'presentation/pages/home_binding.dart';
 
 void main() {
-  runApp(App());
+  // runApp(App());
+  runZonedGuarded(() => runApp(App()), (Object error, StackTrace stackTrace) {
+    print(error);
+  });
 }
 
 class App extends StatelessWidget {

@@ -2,7 +2,7 @@ targets:
   $default:
     sources:
       - lib/**
-      - lib/infra/gq_queries/**
+      - lib/core/gq_queries/**
       - gq_scheme.graphql
       - $package$
     builders:
@@ -10,8 +10,8 @@ targets:
         options:
           schema_mapping:
             - schema: gq_scheme.graphql
-              queries_glob: lib/infra/gq_queries/*.graphql
-              output: lib/infra/gq_models/gq_models.dart
+              queries_glob: lib/core/gq_queries/*.graphql
+              output: lib/core/gq_models/gq_models.dart
               naming_scheme: simple
           scalar_mapping:
             - graphql_type: Long

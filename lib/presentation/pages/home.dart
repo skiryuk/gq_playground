@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:gq_playground/presentation/pages/home_store.dart';
+import 'package:gq_playground/presentation/pages/home_controller.dart';
 
-class HomePage extends GetView<HomeStore> {
+class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -12,7 +12,10 @@ class HomePage extends GetView<HomeStore> {
               Text('total: ${controller.total}'),
               CupertinoButton(
                   child: Text('GetPage'),
-                  onPressed: () => controller.loadContractsPage())
+                  onPressed: () => controller.loadContractsPage()),
+              CupertinoButton(
+                  child: Text('Increase total'),
+                  onPressed: () => controller.increaseTotal())
             ],
           )),
     ));
