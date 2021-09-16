@@ -1,7 +1,20 @@
 import 'package:artemis/artemis.dart';
-import 'package:json_annotation/json_annotation.dart';
 
-abstract class IGqClient {
-  Future<GraphQLResponse<T>> execute<T, U extends JsonSerializable>(
-      GraphQLQuery<T, U> query);
+abstract class IAppConfig {
+  late String url;
+}
+
+class AppApiConfig extends IAppConfig {
+  final String url = 'http://dolfront.beelinedev.ru/graphql';
+}
+
+class GraphQlClient {
+  final ArtemisClient instance;
+
+  GraphQlClient._(this.instance);
+
+  factory GraphQlClient(IAppConfig config) {
+    final instance = ArtemisClient(config.url);
+    return GraphQlClient._(instance);
+  }
 }
